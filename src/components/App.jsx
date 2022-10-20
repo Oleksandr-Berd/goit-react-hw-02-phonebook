@@ -8,7 +8,8 @@ export class App extends React.Component {
   };
 
   handleInputChange = evt => {
-    console.log(evt);
+    // evt.preventdefault;
+    console.log(evt.target.value);
   };
 
   render() {

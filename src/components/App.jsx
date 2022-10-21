@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './Form';
 import ContactList from './ContactList';
+import Filter from './Filter';
 
 export class App extends React.Component {
   state = {
@@ -33,12 +34,13 @@ export class App extends React.Component {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          fontSize: 40,
+          fontSize: 30,
           color: '#010101',
         }}
       >
         <h1 className="titlePhonebook">Phonebook</h1>
         <Form onSubmit={this.formSubmitHandler} />
+        <Filter />
         <h2 className="contactList">Contacts</h2>
         <ContactList contacts={contacts} onDeleteContact={this.deleteContact} />
       </div>

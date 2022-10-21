@@ -1,31 +1,16 @@
 import React from 'react';
-import Input from '../components/Input.jsx';
+import Form from './Form';
 
 export class App extends React.Component {
   state = {
     contacts: [],
-    name: '',
-    number: '',
   };
 
-  handleInput = evt => {
-    const { name, value } = evt.currentTarget;
-    this.setState({ [name]: value });
-  };
-
-  handleSubmit = evt => {
-    evt.preventDefault();
-    this.reset();
-  };
-
-  reset = () => {
-    this.setState({ name: '' });
+  formSubmitHandler = data => {
+    console.log(data);
   };
 
   render() {
-    const name = this.state;
-    const contacts = this.state;
-
     return (
       <div
         style={{
@@ -38,11 +23,7 @@ export class App extends React.Component {
         }}
       >
         <h1 className="titlePhonebook">Phonebook</h1>
-        <Input
-          value={name}
-          onChange={this.handleInput}
-          onSubmit={this.handleSubmit}
-        />
+        <Form onSubmit={this.formSubmitHandler} />
       </div>
     );
   }

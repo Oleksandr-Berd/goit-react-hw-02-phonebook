@@ -16,13 +16,19 @@ export class App extends React.Component {
     console.log(data);
   };
 
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+
   render() {
     const { contacts } = this.state;
 
     return (
       <div
         style={{
-          height: '100vh',
+          // height: '100vh',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -34,7 +40,7 @@ export class App extends React.Component {
         <h1 className="titlePhonebook">Phonebook</h1>
         <Form onSubmit={this.formSubmitHandler} />
         <h2 className="contactList">Contacts</h2>
-        <ContactList contacts={contacts} />
+        <ContactList contacts={contacts} onDeleteContact={this.deleteContact} />
       </div>
     );
   }

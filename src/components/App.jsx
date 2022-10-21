@@ -5,20 +5,21 @@ export class App extends React.Component {
   state = {
     contacts: [],
     name: '',
-  };
-
-  reset = () => {
-    this.setState({ name: '' });
+    number: '',
   };
 
   handleInput = evt => {
-    const { value } = evt.currentTarget;
-    this.setState({ name: value });
+    const { name, value } = evt.currentTarget;
+    this.setState({ [name]: value });
   };
 
   handleSubmit = evt => {
     evt.preventDefault();
     this.reset();
+  };
+
+  reset = () => {
+    this.setState({ name: '' });
   };
 
   render() {
@@ -38,7 +39,7 @@ export class App extends React.Component {
       >
         <h1 className="titlePhonebook">Phonebook</h1>
         <Input
-          name={name}
+          value={name}
           onChange={this.handleInput}
           onSubmit={this.handleSubmit}
         />

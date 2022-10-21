@@ -7,9 +7,18 @@ export class App extends React.Component {
     name: '',
   };
 
-  handleInputChange = evt => {
-    // evt.preventdefault;
-    console.log(evt.target.value);
+  reset = () => {
+    this.setState({ name: '' });
+  };
+
+  handleInput = evt => {
+    const { value } = evt.currentTarget;
+    this.setState({ name: value });
+  };
+
+  handleSubmit = evt => {
+    evt.preventDefault();
+    this.reset();
   };
 
   render() {
@@ -27,7 +36,12 @@ export class App extends React.Component {
           color: '#010101',
         }}
       >
-        <Input name={name} onChange={this.handleInputChange} />
+        <h1 className="titlePhonebook">Phonebook</h1>
+        <Input
+          name={name}
+          onChange={this.handleInput}
+          onSubmit={this.handleSubmit}
+        />
       </div>
     );
   }

@@ -21,7 +21,8 @@ export class App extends React.Component {
       name,
       number,
     };
-    console.log(contact);
+
+    const contactArray = Object.values(this.state.contacts);
 
     // this.setState(prevState => ({
     //   contacts: prevState.contacts.map(el => {
@@ -42,11 +43,17 @@ export class App extends React.Component {
     // this.setState(prevState => ({
     //   contacts: prevState.contacts.map(contact =>
     //     contact.id !== id ? [contact, ...prevState.contacts] : alert(`fck`)
-
     //   ),
     // }));
+
     this.setState(({ contacts }) => ({
-      contacts: [contact, ...contacts],
+      contacts: contactArray.map(el => {
+        if (el.name === contact.name) {
+          return alert(`${contact.name} is already in contacts`);
+        } else {
+          return [contact, ...contacts];
+        }
+      }),
     }));
   };
 
@@ -88,7 +95,7 @@ export class App extends React.Component {
   };
 
   render() {
-    const { contacts, filter } = this.state;
+    const { filter } = this.state;
 
     const visibleContacts = this.getVisibleContacts();
 

@@ -6,6 +6,7 @@ class Form extends Component {
   numberInputId = nanoid();
 
   state = {
+    id: this.nameInputId,
     name: '',
     number: '',
   };

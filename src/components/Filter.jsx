@@ -1,7 +1,7 @@
-const Filter = ({ filter, changeFilter }) => (
+const Filter = ({ value, onChange }) => (
   <label htmlFor="">
     Find contacts by name
-    <input type="text" value={filter} onChange={changeFilter} />
+    <input type="text" value={value} onChange={onChange} />
   </label>
 );
 

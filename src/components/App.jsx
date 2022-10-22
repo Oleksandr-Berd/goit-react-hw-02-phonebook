@@ -77,8 +77,20 @@ export class App extends React.Component {
     this.setState({ filter: evt.currentTarget.value });
   };
 
+  getVisibleContacts = () => {
+    const { filter, contacts } = this.state;
+
+    const normilizedFilter = filter.toLowerCase();
+
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normilizedFilter)
+    );
+  };
+
   render() {
     const { contacts, filter } = this.state;
+
+    const visibleContacts = this.getVisibleContacts();
 
     return (
       <div
@@ -94,9 +106,12 @@ export class App extends React.Component {
       >
         <h1 className="titlePhonebook">Phonebook</h1>
         <Form onSubmit={this.formSubmitHandler} />
-        <Filter filter={filter} changeFilter={this.changeFilter} />
+        <Filter value={filter} onChange={this.changeFilter} />
         <h2 className="contactList">Contacts</h2>
-        <ContactList contacts={contacts} onDeleteContact={this.deleteContact} />
+        <ContactList
+          contacts={visibleContacts}
+          onDeleteContact={this.deleteContact}
+        />
       </div>
     );
   }

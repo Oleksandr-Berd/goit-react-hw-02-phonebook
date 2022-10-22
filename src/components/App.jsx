@@ -2,7 +2,7 @@ import React from 'react';
 import Form from './Form';
 import ContactList from './ContactList';
 import Filter from './Filter';
-// import { nanoid } from 'nanoid';
+import css from './App.module.css';
 
 export class App extends React.Component {
   state = {
@@ -104,10 +104,10 @@ export class App extends React.Component {
           color: '#010101',
         }}
       >
-        <h1 className="titlePhonebook">Phonebook</h1>
+        <h1 className={css.titlePhonebook}>Phonebook</h1>
         <Form onSubmit={this.formSubmitHandler} />
         <Filter value={filter} onChange={this.changeFilter} />
-        <h2 className="contactList">Contacts</h2>
+        <h2 className={css.contactList}>Contacts</h2>
         <ContactList
           contacts={visibleContacts}
           onDeleteContact={this.deleteContact}

@@ -1,0 +1,11 @@
+.titlePhonebook {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-family: 'Dancing Script', cursive;
+}
+
+.contactList {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-family: 'Dancing Script', cursive;
+}

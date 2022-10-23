@@ -1,4 +1,5 @@
 import css from '../components/Filter.module.css';
+import PropTypes from 'prop-types';
 
 const Filter = ({ value, onChange }) => (
   <label htmlFor="" className={css.label__filter}>
@@ -11,5 +12,9 @@ const Filter = ({ value, onChange }) => (
     />
   </label>
 );
+
+Filter.prototype = {
+  value: PropTypes.string.isRequired,
+};
 
 export default Filter;

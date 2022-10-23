@@ -40,21 +40,24 @@ export class App extends React.Component {
     //   }),
     // }));
 
-    // this.setState(prevState => ({
-    //   contacts: prevState.contacts.map(contact =>
-    //     contact.id !== id ? [contact, ...prevState.contacts] : alert(`fck`)
-    //   ),
-    // }));
+    if (this.state.contacts.some(contact => contact.name === name)) {
+      alert(`contact ${name} already in contacts`);
+      return;
+    }
 
     this.setState(({ contacts }) => ({
-      contacts: contactArray.map(el => {
-        if (el.name === contact.name) {
-          return alert(`${contact.name} is already in contacts`);
-        } else {
-          return [contact, ...contacts];
-        }
-      }),
+      contacts: [...contacts, contact],
     }));
+
+    // this.setState(({ contacts }) => ({
+    //   contacts: contactArray.map(el => {
+    //     if (el.name === contact.name) {
+    //       return alert(`${contact.name} is already in contacts`);
+    //     } else {
+    //       return [contact, ...contacts];
+    //     }
+    //   }),
+    // }));
   };
 
   deleteContact = contactId => {
@@ -100,18 +103,7 @@ export class App extends React.Component {
     const visibleContacts = this.getVisibleContacts();
 
     return (
-      <div
-        className={css.container}
-        style={{
-          // height: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 30,
-          color: '#010101',
-        }}
-      >
+      <div className={css.container}>
         <h1 className={css.titlePhonebook}>Phonebook</h1>
         <Form onSubmit={this.formSubmitHandler} />
         <Filter value={filter} onChange={this.changeFilter} />

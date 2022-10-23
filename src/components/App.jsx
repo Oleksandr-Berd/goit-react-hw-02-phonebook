@@ -101,6 +101,7 @@ export class App extends React.Component {
 
     return (
       <div
+        className={css.container}
         style={{
           // height: '100vh',
           display: 'flex',

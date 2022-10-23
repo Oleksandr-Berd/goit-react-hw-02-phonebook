@@ -9,3 +9,12 @@
   margin-bottom: 10px;
   font-family: 'Dancing Script', cursive;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: #010101;
+}
